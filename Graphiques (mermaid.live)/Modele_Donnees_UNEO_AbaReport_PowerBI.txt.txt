@@ -1,0 +1,138 @@
+erDiagram
+
+  %% Table des écritures comptables
+  GrandLivre {
+    str Date "Ex: 14.01.2025"
+    int CompteDebit "Ex: 1000"
+    int CompteCredit "Ex: 2000"
+    float MontantDebit "Ex: NaN"
+    float MontantCredit "Ex: 125.00"
+    str Libelle "Ex: Paiement fournisseur par caisse"
+    str CodeAnalytique "Ex: A001 ou vide"
+    str RefDocument "Ex: DOC12345"
+  }
+
+  %% Plan comptable détaillé
+  PlanComptable {
+    int Compte "Ex: 1000"
+    str Intitule "Ex: Caisse"
+    str Categorie "Ex: Actif"
+    str SousClasse "Ex: Actif circulant"
+    str DetailCategorie "Ex: Liquidité"
+    str TypeCompte "Ex: Banque, TVA, Centralisateur"
+  }
+
+  %% Codes analytiques pour affectation des coûts/projets
+  CodesAnalytiques {
+    str Code "Ex: A001"
+    str Libelle "Ex: Centre IT"
+    str Type "Ex: Projet, Département, Produit"
+  }
+
+  %% Fournisseurs
+  Fournisseurs {
+    int IDFournisseur
+    str Nom "Ex: Swisscom AG"
+    str Adresse "Ex: Alte Tiefenaustrasse 6"
+    str CodePostal "Ex: 3050"
+    str Pays "Ex: CH"
+    str DeviseFacture "Ex: CHF"
+  }
+
+  %% Factures fournisseurs
+  FacturesFournisseurs {
+    int NumeroDocument "Ex: 148"
+    int IDFournisseur "Ex: 47"
+    str DateFacture "Ex: 12.01.2025"
+    str NumeroFacture "Ex: F-2025-001"
+    str DatePaiement "Ex: 20.01.2025"
+    float Montant "Ex: 2340.75"
+    str Monnaie "Ex: CHF"
+    str StatutFacture "Ex: OFFEN, ERLED, STORN"
+    str TypeDocument "Ex: F, NC, REP"
+    str RefDocument "Ex: DOC12345"
+  }
+
+  %% Clients
+  Clients {
+    int IDClient
+    str Nom "Ex: Tech Solutions SA"
+    str Adresse
+    str CodePostal
+    str Pays "Ex: CH"
+  }
+
+  %% Factures clients
+  FacturesClients {
+    int NumeroDocument "Ex: 215"
+    int IDClient "Ex: 62"
+    str DateFacture "Ex: 14.01.2025"
+    str NumeroFacture "Ex: C-2025-045"
+    str DatePaiement "Ex: 25.01.2025"
+    float Montant "Ex: 1780.00"
+    str Monnaie "Ex: CHF"
+    str StatutFacture "Ex: OFFEN, ERLED"
+    str TypeDocument "Ex: F, G, V"
+    str RefDocument "Ex: DOC56789"
+  }
+
+  %% Monnaies
+  Monnaies {
+    str Code "Ex: CHF"
+    str Nom "Ex: Franc Suisse"
+  }
+  
+  %% Cotations journalières des devises étrangères
+  CotationsDevises {
+    str CodeMonnaie "Ex: USD"
+    date DateCotation "Ex: 31.12.2024"
+    float Taux "Ex: 0.89 (1 USD = 0.89 CHF)"
+    str Source "Ex: Table de monnaies Abacus"
+  }
+
+  %% Soldes des comptes par exercice (balance)
+  BalanceDesComptes {
+    int Compte "Ex: 1000"
+    str Intitule "Ex: Caisse"
+    float SoldeExercice1 "Ex: 25000.50"
+    float SoldeExercice2 "Ex: 26000.00"
+    float SoldeExercice3 "Ex: 24000.75"
+  }
+
+  %% Bilan synthétique par exercice
+  Bilan {
+    int Compte "Ex: 1000"
+    str Intitule "Ex: Caisse"
+    float SoldeExercice1 "Ex: 25000.50"
+    float SoldeExercice2 "Ex: 26000.00"
+    float SoldeExercice3 "Ex: 24000.75"
+  }
+
+  %% État de résultat (compte de pertes et profits)
+  EtatDeResultat {
+    int Compte "Ex: 5200"
+    str Intitule "Ex: Charges de personnel"
+    float MontantExercice1 "Ex: 10000.00"
+    float MontantExercice2 "Ex: 12000.00"
+    float MontantExercice3 "Ex: 11500.50"
+  }
+
+  %% Relations
+  Monnaies ||--o{ CotationsDevises : "A des cotations"
+
+  GrandLivre }o--|| PlanComptable : "Utilise compte"
+  GrandLivre }o--o{ CodesAnalytiques : "Affecté à"
+
+  FacturesFournisseurs }o--|| Fournisseurs : "Fournisseur"
+  FacturesFournisseurs }o--|| Monnaies : "Devise"
+
+  FacturesClients }o--|| Clients : "Client"
+  FacturesClients }o--|| Monnaies : "Devise"
+
+  BalanceDesComptes }o--|| PlanComptable : "Synthétise compte"
+  Bilan }o--|| PlanComptable : "Synthétise compte"
+  EtatDeResultat }o--|| PlanComptable : "Synthétise compte"
+
+  GrandLivre }o--|| BalanceDesComptes : "Alimente"
+  GrandLivre }o--|| Bilan : "Alimente"
+  GrandLivre }o--|| EtatDeResultat : "Alimente"

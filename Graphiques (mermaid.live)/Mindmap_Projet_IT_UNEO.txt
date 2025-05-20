@@ -1,0 +1,18 @@
+mindmap
+  root((🎯 Projet IT - Portail client SharePoint UNEO))
+    Environnement technique
+      Abacus : ERP
+      Yooz : GED
+      winvsnext : CRM
+      Power BI : Dashboard
+    Fonctionnalités du portail
+      Dashboards financiers
+      Documents fiscaux
+      Échéances fiscales
+      Connexion unifiée SSO
+    Connexion Power BI
+      Import manuel CSV/XLSX
+      Intégration via APIs ou ODBC
+    Sécurité IT
+      Environnement sécurisé Microsoft 365
+

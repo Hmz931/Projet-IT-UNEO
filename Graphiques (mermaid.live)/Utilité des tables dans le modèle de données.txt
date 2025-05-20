@@ -1,0 +1,18 @@
+Justification simplifiée des tables
+	GrandLivre : Suivi et évolution des mouvements des comptes (ex. liquidités, charges, produits).
+
+	PlanComptable : Structure et classification des comptes pour regrouper les écritures par nature.		
+
+	CodesAnalytiques : Suivi des activités par projet, département ou centre de coûts.
+
+	Fournisseurs / FacturesFournisseurs : Analyse des dettes, paiements, et contrôle des postes ouverts.
+
+	Clients / FacturesClients : Suivi des créances, paiements reçus, et factures ouvertes.
+
+	Monnaies / CotationsDevises : Suivi des devises et évaluation des risques de change.
+
+	BalanceDesComptes : Suivi des soldes en fin de période, calcul des indicateurs et ratios financiers.
+
+	Bilan : Représente la situation patrimoniale de l’entreprise à une date donnée.
+
+	ÉtatDeRésultat : Détaille les performances économiques sur une période (résultat net, marges…).

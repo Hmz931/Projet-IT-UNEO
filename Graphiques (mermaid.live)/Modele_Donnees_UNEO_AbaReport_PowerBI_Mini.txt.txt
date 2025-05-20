@@ -1,0 +1,16 @@
+graph TD
+  A[GrandLivre] -->|Utilise compte| B[PlanComptable]
+  A -->|Affecté à| C[CodesAnalytiques]
+
+  D[FacturesFournisseurs] -->|Fournisseur| E[Fournisseurs]
+  D -->|Devise| F[Monnaies]
+
+  G[FacturesClients] -->|Client| H[Clients]
+  G -->|Devise| F
+
+  F -->|A des cotations| I[CotationsDevises]
+
+  %% Nouveaux éléments financiers
+  A -->|Alimente| J[Bilan]
+  A -->|Alimente| K[État de Résultat]
+  A -->|Alimente| L[Balance des comptes]

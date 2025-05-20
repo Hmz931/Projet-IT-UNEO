@@ -1,0 +1,22 @@
+flowchart LR
+    INPUT[Client UNEO] --> AUTH[🔑 Authentification SSO]
+    AUTH --> PORTAL[🌐 Portail Client SharePoint]
+    PORTAL --> DOCS[📂 Accès aux Documents]
+    PORTAL --> DASH[📊 Consultation des Dashboards]
+    PORTAL --> FISC[📋 Suivi des Échéances Fiscales]
+    PORTAL --> TOOLS[🛠 Connexion aux Outils]
+    TOOLS --> ABACUS[Abacus ERP]
+    TOOLS --> YOOZ[Yooz GED]
+    TOOLS --> WINVS[winvsnext CRM]
+    SECURITY[🔒 Sécurité IT - Microsoft 365] --> PORTAL
+
+    style INPUT fill:#e3f2fd,stroke:#2196f3
+    style AUTH fill:#ede7f6,stroke:#673ab7
+    style PORTAL fill:#e1f5fe,stroke:#0288d1,stroke-width:2px
+    style DOCS fill:#e8f5e9,stroke:#43a047
+    style DASH fill:#f3e5f5,stroke:#9c27b0
+    style FISC fill:#fff3e0,stroke:#fb8c00
+    style TOOLS fill:#fce4ec,stroke:#e91e63
+    style SECURITY fill:#fbe9e7,stroke:#d84315
+
+    
